@@ -24,6 +24,8 @@ class Packs {
 
 }
 
+////////////// pack nacional
+
 class PackNacionales inherits Packs{
     var provincia
     const actividadesIncluidas = []
@@ -39,6 +41,9 @@ class PackNacionales inherits Packs{
 
 }
 }
+
+
+////////// pack internacional 
 
 
 
@@ -61,15 +66,31 @@ class PackInternacionales inherits Packs{
 }
 }
 
-
-
+//////// coordinador
 
 class Coordinador{
 
     var cantDeViajesRealizados
     var estaMotivado = true
     var añosDeExp
-    var rolDeGuia = "guia"
+    var rolDeCoordinador
+    const rolesAptos = ["guia", "asistente", "acompañante"]
+
+    method cantDeViajesRealizados() = cantDeViajesRealizados
+    method estaMotivado() = estaMotivado
+    method añosDeExp() = añosDeExp
+    method rolDeCoordinador() = rolDeCoordinador
+
+    method cambiarMotivacion(){
+        estaMotivado = false
+    }
+    
+
+//    method cambiarRolDeCoordinador(unRol){
+//        rolDeCoordinador.add(unRol)
+//    }
+// este no xq agrega en vez de seleccionar.
+
 
 
 
