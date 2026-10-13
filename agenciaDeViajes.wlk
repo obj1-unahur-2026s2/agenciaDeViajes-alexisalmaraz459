@@ -18,8 +18,12 @@ class Packs {
   coordinador = unCoordinador
 }
 
+    method precioDeBeneficios() = 
+    
+    beneficiosEspeciales.filter({beneficio => beneficio.estaVigente()}).sum({beneficio => beneficio.costo()})
 
-    method precioBaseMasBeneficios(beneficios)
+    
+    method precioTotal() = precioBase + self.precioDeBeneficios()
 
 
 }
@@ -60,12 +64,9 @@ class PackInternacionales inherits Packs{
         LugarDeInteres = false
     }
 
-    method agregarEscala(unaEscala) {
-     cantidadDeEscalas = unaEscala
+    override method precioTotal() = super() + super()* 0.20
 
 }
-}
-
 //////// coordinador
 
 class Coordinador{
@@ -84,7 +85,19 @@ class Coordinador{
     method cambiarMotivacion(){
         estaMotivado = false
     }
+
+    method cambiarRolDeCoordinador(unRol){
+        if(!rolesAptos.contains(unRol)){
+            self.error("Ese rol no existe, selecciona uno entre: guia, asistente o acompañante")
+        }
+        else{
+            rolDeCoordinador = unRol
+    }
     
+    }
+
+
+
 
 //    method cambiarRolDeCoordinador(unRol){
 //        rolDeCoordinador.add(unRol)
@@ -92,8 +105,23 @@ class Coordinador{
 // este no xq agrega en vez de seleccionar.
 
 
+////////////////// beneficios especiales
+
+}
+
+class beneficiosEspeciales{
+   
+    var costo
+    var beneficio
+    var estaVigente = true
 
 
+    method estaVigente() = estaVigente
+
+    method cambiarEstadoVigencia(){
+        estaVigente = false
+    }
+ 
 
 }
 
